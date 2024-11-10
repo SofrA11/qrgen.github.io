@@ -18,12 +18,25 @@ document.getElementById("generateBtn").addEventListener("click", () => {
 document.getElementById("saveQrBtn").addEventListener("click", () => {
     const qrCodeDiv = document.getElementById("qrCode").querySelector("img");
     if (qrCodeDiv) {
+        // Kreiraj canvas element
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Postavi dimenzije canvasa na dimenzije slike
+        canvas.width = qrCodeDiv.width;
+        canvas.height = qrCodeDiv.height;
+
+        // Nacrtaj sliku na canvas
+        ctx.drawImage(qrCodeDiv, 0, 0);
+
+        // Kreiraj link za preuzimanje
         const link = document.createElement("a");
-        link.href = qrCodeDiv.src;
+        link.href = canvas.toDataURL("image/png");  // Pravi DataURL za sliku
         link.download = "QRCode.png";
         link.click();
     }
 });
+
 
 document.getElementById("copyQrBtn").addEventListener("click", async () => {
     const qrCodeDiv = document.getElementById("qrCode").querySelector("img");
