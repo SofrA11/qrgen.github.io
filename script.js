@@ -29,30 +29,25 @@ document.getElementById("saveQrBtn").addEventListener("click", () => {
         // Nacrtaj sliku na canvas
         ctx.drawImage(qrCodeDiv, 0, 0);
 
-        // Kreiraj link za preuzimanje
-        const link = document.createElement("a");
+        // Kreiraj DataURL za sliku
         const dataUrl = canvas.toDataURL("image/png");
 
-        // Za mobilne uređaje, koristimo Blob
-        if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
-            const byteString = atob(dataUrl.split(',')[1]);
-            const arrayBuffer = new ArrayBuffer(byteString.length);
-            const view = new Uint8Array(arrayBuffer);
-            for (let i = 0; i < byteString.length; i++) {
-                view[i] = byteString.charCodeAt(i);
-            }
-            const blob = new Blob([view], { type: 'image/png' });
-            const url = URL.createObjectURL(blob);
-            link.href = url;
-        } else {
-            // Na računarima samo koristi DataURL
-            link.href = dataUrl;
-        }
-
-        link.download = "QRCode.png";
-        link.click();
+        // Koristi FileSaver.js da preuzmeš sliku kao PNG fajl
+        const blob = dataURLtoBlob(dataUrl);
+        saveAs(blob, "QRCode.png");
     }
 });
+
+// Funkcija za konverziju DataURL u Blob
+function dataURLtoBlob(dataUrl) {
+    const byteString = atob(dataUrl.split(',')[1]);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const view = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+        view[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([view], { type: 'image/png' });
+}
 
 
 
