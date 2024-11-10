@@ -31,11 +31,29 @@ document.getElementById("saveQrBtn").addEventListener("click", () => {
 
         // Kreiraj link za preuzimanje
         const link = document.createElement("a");
-        link.href = canvas.toDataURL("image/png");  // Pravi DataURL za sliku
+        const dataUrl = canvas.toDataURL("image/png");
+
+        // Za mobilne uređaje, koristimo Blob
+        if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
+            const byteString = atob(dataUrl.split(',')[1]);
+            const arrayBuffer = new ArrayBuffer(byteString.length);
+            const view = new Uint8Array(arrayBuffer);
+            for (let i = 0; i < byteString.length; i++) {
+                view[i] = byteString.charCodeAt(i);
+            }
+            const blob = new Blob([view], { type: 'image/png' });
+            const url = URL.createObjectURL(blob);
+            link.href = url;
+        } else {
+            // Na računarima samo koristi DataURL
+            link.href = dataUrl;
+        }
+
         link.download = "QRCode.png";
         link.click();
     }
 });
+
 
 
 document.getElementById("copyQrBtn").addEventListener("click", async () => {
