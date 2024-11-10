@@ -1,0 +1,154 @@
+/* Osnovni izgled */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f6f8;
+}
+
+/* Kontejner aplikacije */
+#app {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    transition: transform 0.2s;
+}
+
+#app:hover {
+    transform: scale(1.02);
+}
+
+/* Naslov */
+#app h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+#urlInput{
+    padding: 12px;
+    
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    font-size: 1em;
+    width: 90%;
+}
+/* Polja za unos i dugmad */
+ #generateBtn, #qrImageInput {
+
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    font-size: 1em;
+}
+
+#generateBtn {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#generateBtn:hover {
+    background-color: #0056b3;
+}
+
+/* QR Code sekcija */
+#qrCodeSection {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#qrCode {
+
+    margin: 15px;
+    padding: 15px;
+    display: flex;                /* Koristi Flexbox za layout */
+    justify-content: center;      /* Centriraj horizontalno */
+    align-items: center;          /* Centriraj vertikalno */
+    border: 2px dashed #6c757d;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    text-align: center;  
+}
+#qrGeneratorSubSection{
+    justify-content: center;
+    align-items: center;
+}
+/* Dugmad za QR kôd */
+#saveQrBtn, #copyQrBtn,#copyURLBtn{
+    margin-top: 10px;
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#saveQrBtn:hover, #copyQrBtn:hover {
+    background-color: #218838;
+}
+
+/* Dekodirani tekst */
+#decodedText {
+    margin-top: 25px;
+    font-weight: bold;
+    color: #333;
+    background-color: #eaf4fc;
+    padding: 20px;
+    border: 1px solid #bcd5f7;
+    border-radius: 8px;
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+/* Sekcija za generisanje i čitanje QR koda */
+#qrGeneratorSection, #qrReaderSection {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f0f4f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stil za upload kontejner */
+#uploadContainer {
+    margin-top: 15px;
+    padding: 20px;
+    border: 2px dashed #6c757d;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    text-align: center;
+    font-size: 1em;
+    color: #6c757d;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#uploadContainer:hover {
+    background-color: #e9ecef;
+}
+
+#qrImageInput {
+    display: none;
+}
+
+/* Razdvajanje sekcija */
+#qrGeneratorSection h2, #qrReaderSection h2 {
+    color: #333;
+}
+

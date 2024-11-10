@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Kod Generator i Čitač</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>QR Code Generator & Reader</h1>
+        
+        <!-- Sekcija za generisanje QR koda -->
+        <div id="qrGeneratorSection">
+            <h2>Generate QR Code from URL</h2>
+            <input type="text" id="urlInput" placeholder="Enter URL here" />
+            <button id="generateBtn">Generate QR Code</button>
+            <div id="qrGeneratorSubSection">
+                <div id="qrCode"></div>
+                <div id="qrCodeSection">   
+                    <button id="saveQrBtn">Save QR Code</button>
+                    <button id="copyQrBtn">Copy QR Code</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sekcija za dekodiranje QR koda -->
+        <div id="qrReaderSection">
+            <h2>Read QR Code from Image</h2>
+            <div id="uploadContainer">
+                <p>Upload or Drop QR Code Here</p>
+                <input type="file" id="qrImageInput" accept="image/*" />
+            </div>
+            <div id="decodedText">Decoded QR</div>
+            <button id="copyURLBtn">Copy URL</button>
+            
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
